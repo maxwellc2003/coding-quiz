@@ -1,4 +1,5 @@
 var score = 0
+var timeLeft = 60
 
 var buttonEl = document.querySelector("#start-time");
 var timerEl = document.getElementById("countdown");
@@ -13,7 +14,6 @@ var buttonCEl = document.querySelector("#button-c");
 var buttonDEl = document.querySelector("#button-d");
 
 var countDown = function () {
-    var timeLeft = 60
     var timeInterval = setInterval(function () {
         if (timeLeft > 1) {
             timerEl.textContent = timeLeft + ' seconds remaining';
@@ -24,37 +24,123 @@ var countDown = function () {
             timeLeft--;
         }
         if (timeLeft === 0) {
-            console.log("blastoff")
-            clearInterval(startCountdown)
+            timerEl.textContent = "0 Seconds Remaining"
+            clearInterval(timeInterval)
+            endQuiz()
         };
+        console.log(timeLeft)
     }, 1000);
 };
 
 var startQuiz = function () {
-    questionEl.textContent = "first question"
-    optionAEl.textContent = "wrong"
-    optionBEl.textContent = "right"
-    optionCEl.textContent = "wrong"
-    optionDEl.textContent = "wrong"
 
-    // option buttons
-    buttonAEl.addEventListener("click", function () {
-        console.log("false")
-    })
-    buttonBEl.addEventListener("click", function () {
-        console.log("true")
-    })
-    buttonCEl.addEventListener("click", function () {
-        console.log("false")
-    })
-    buttonDEl.addEventListener("click", function () {
-        console.log("false")
-    })
+    var firstQuestion = function () {
+        questionEl.textContent = "first question";
+        optionAEl.textContent = "wrong";
+        optionBEl.textContent = "right";
+        optionCEl.textContent = "wrong";
+        optionDEl.textContent = "wrong";
+
+        buttonAEl.onclick = function () {
+            endQuiz()
+            secondQuestion()
+        }
+        buttonBEl.onclick = function () {
+            secondQuestion()
+        }
+        buttonCEl.onclick = function () {
+            secondQuestion()
+        }
+        buttonDEl.onclick = function () {
+            secondQuestion()
+        }
+    }
+
+    var secondQuestion = function () {
+        questionEl.textContent = "second question";
+        optionAEl.textContent = "wrong";
+        optionBEl.textContent = "wrong";
+        optionCEl.textContent = "wrong";
+        optionDEl.textContent = "right";
+
+        buttonAEl.onclick = function () {
+            thirdQuestion()
+        }
+        buttonBEl.onclick = function () {
+            thirdQuestion()
+        }
+        buttonCEl.onclick = function () {
+            thirdQuestion()
+        }
+        buttonDEl.onclick = function () {
+            thirdQuestion()
+        }
+    }
+
+    var thirdQuestion = function () {
+        questionEl.textContent = "third question";
+        optionAEl.textContent = "right";
+        optionBEl.textContent = "wrong";
+        optionCEl.textContent = "wrong";
+        optionDEl.textContent = "wrong";
+
+        buttonAEl.onclick = function () {
+            fourthQuestion()
+        }
+        buttonBEl.onclick = function () {
+            fourthQuestion()
+        }
+        buttonCEl.onclick = function () {
+            fourthQuestion()
+        }
+        buttonDEl.onclick = function () {
+            fourthQuestion()
+        }
+    }
+
+    var fourthQuestion = function () {
+        questionEl.textContent = "fourth question";
+        optionAEl.textContent = "wrong";
+        optionBEl.textContent = "right";
+        optionCEl.textContent = "wrong";
+        optionDEl.textContent = "wrong";
+
+        buttonAEl.onclick = function () {
+            endQuiz()
+        }
+        buttonBEl.onclick = function () {
+            endQuiz()
+        }
+        buttonCEl.onclick = function () {
+            endQuiz()
+        }
+        buttonDEl.onclick = function () {
+            endQuiz()
+        }
+    }
+
+    firstQuestion()
 }
 
-// start game button
+var endQuiz = function () {
+    location.href = './highscores.html';
+}
+
+// start quiz button
 buttonEl.addEventListener("click", function () {
     countDown()
     startQuiz()
 })
 
+// option buttons
+buttonAEl.addEventListener("click", function () {
+})
+
+buttonBEl.addEventListener("click", function () {
+})
+
+buttonCEl.addEventListener("click", function () {
+})
+
+buttonDEl.addEventListener("click", function () {
+})
