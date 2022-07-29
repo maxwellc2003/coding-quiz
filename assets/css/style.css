@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #44e9ff;
+  --secondary: #497980;
+  --tertiary: rgb(192, 246, 253);
+  --grey: #333;
+  font-size: 62.5%;
+}
+
+body {
+  background: #ededed;
+  color: var(--grey);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+  background: var(--secondary);
+  padding: 30px 25px;
+  border-bottom: 5px solid var(--primary);
+  display: flex;
+  justify-content: space-between;
+}
+
+header p {
+  color: var(--tertiary);
+  margin: 5px 0 20px;
+  font-size: 2rem;
+}
+
+.timeLeft h1,
+h2 {
+  color: var(--primary)
+}
+
+footer {
+  width: 100%;
+  background: var(--secondary);
+  color: var(--tertiary);
+  font-size: 2.4rem;
+  padding: 20px;
+  border-top: 5px solid var(--primary);
+}
+
+.page-title {
+  color: var(--primary);
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-size: 4.5rem;
+}
+
+.page-content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px auto;
+  width: 95%;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  display: inline-block;
+  padding: 10px 15px;
+  background: var(--primary);
+  font-size: 2.2rem;
+  border-radius: 12px;
+  position: relative;
+  top: -3px;
+  box-shadow: 0 3px var(--grey);
+}
+
+.button {
+  background: var(--primary);
+  box-shadow: 0 3px var(--grey);
+}
+
+.box {
+  width: 50%;
+  border: 5px solid var(--primary);
+  display: flex;
+  background: var(--secondary);
+}
+
+.box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-content: center;
+  padding-right: 40px;
+}
+
+.box ul li {
+  border: 5px solid var(--primary);
+  margin: 10px;
+  min-height: 15%;
+  max-height: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn:hover {
+  box-shadow: 0 2px var(--grey);
+  top: -2px;
+}
+
+.btn:active {
+  box-shadow: 0 0px var(--grey);
+  top: 0;
+}
+
+.button:hover {
+  box-shadow: 0 2px var(--grey);
+  top: -2px;
+}
+
+.button:active {
+  box-shadow: 0 0px var(--grey);
+  top: 0;
+}
+
+@media screen and (max-width: 980px) {
+  form .form-group {
+    flex: 1 100%;
+  }
+
+  form .form-group button {
+    width: 100%;
+  }
+
+  .task-list-wrapper {
+    flex-basis: 100%;
+  }
+
+}
