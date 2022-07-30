@@ -109,6 +109,13 @@ footer {
   justify-content: space-between;
 }
 
+.container {
+  width: 50%;
+  border: 5px solid var(--primary);
+  display: flex;
+  background: var(--secondary);
+}
+
 .btn:hover {
   box-shadow: 0 2px var(--grey);
   top: -2px;

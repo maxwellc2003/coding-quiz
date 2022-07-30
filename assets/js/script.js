@@ -33,7 +33,6 @@ var countDown = function () {
 };
 
 var startQuiz = function () {
-
     var firstQuestion = function () {
         questionEl.textContent = "first question";
         optionAEl.textContent = "wrong";
@@ -42,16 +41,22 @@ var startQuiz = function () {
         optionDEl.textContent = "wrong";
 
         buttonAEl.onclick = function () {
-            endQuiz()
+            score = score - 5
+            timeLeft = timeLeft - 10
             secondQuestion()
         }
         buttonBEl.onclick = function () {
+            score = score + 10
             secondQuestion()
         }
         buttonCEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             secondQuestion()
         }
         buttonDEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             secondQuestion()
         }
     }
@@ -67,12 +72,18 @@ var startQuiz = function () {
             thirdQuestion()
         }
         buttonBEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             thirdQuestion()
         }
         buttonCEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             thirdQuestion()
         }
         buttonDEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             thirdQuestion()
         }
     }
@@ -88,12 +99,18 @@ var startQuiz = function () {
             fourthQuestion()
         }
         buttonBEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             fourthQuestion()
         }
         buttonCEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             fourthQuestion()
         }
         buttonDEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             fourthQuestion()
         }
     }
@@ -106,15 +123,22 @@ var startQuiz = function () {
         optionDEl.textContent = "wrong";
 
         buttonAEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             endQuiz()
         }
         buttonBEl.onclick = function () {
+
             endQuiz()
         }
         buttonCEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             endQuiz()
         }
         buttonDEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             endQuiz()
         }
     }
@@ -123,7 +147,17 @@ var startQuiz = function () {
 }
 
 var endQuiz = function () {
-    location.href = './highscores.html';
+    var element = document.getElementById("prompt");
+    element.remove();
+    ul()
+
+    var ul = function () {
+        var highscoresEl = document.getElementById("prompt")
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode("Four"));
+        li.setAttribute("id", "element4"); // added line
+        highscoresEl.appendChild(li);
+    }
 }
 
 // start quiz button
