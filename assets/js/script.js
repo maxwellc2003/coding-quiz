@@ -1,5 +1,6 @@
 var score = 0
 var timeLeft = 60
+var stopTime = (false)
 
 var buttonEl = document.querySelector("#start-time");
 var timerEl = document.getElementById("countdown");
@@ -28,11 +29,16 @@ var countDown = function () {
             clearInterval(timeInterval)
             endQuiz()
         };
+        if (stopTime) {
+            clearInterval(timeInterval)
+        }
         console.log(timeLeft)
     }, 1000);
 };
 
 var startQuiz = function () {
+    buttonEl.disabled = true;
+
     var firstQuestion = function () {
         questionEl.textContent = "first question";
         optionAEl.textContent = "wrong";
@@ -69,6 +75,8 @@ var startQuiz = function () {
         optionDEl.textContent = "right";
 
         buttonAEl.onclick = function () {
+            score = score - 5
+            timeLeft = timeLeft - 10
             thirdQuestion()
         }
         buttonBEl.onclick = function () {
@@ -82,8 +90,7 @@ var startQuiz = function () {
             thirdQuestion()
         }
         buttonDEl.onclick = function () {
-            score = score - 5
-            timeLeft = timeLeft - 10
+            score = score + 10
             thirdQuestion()
         }
     }
@@ -96,6 +103,7 @@ var startQuiz = function () {
         optionDEl.textContent = "wrong";
 
         buttonAEl.onclick = function () {
+            score = score + 10
             fourthQuestion()
         }
         buttonBEl.onclick = function () {
@@ -128,7 +136,7 @@ var startQuiz = function () {
             endQuiz()
         }
         buttonBEl.onclick = function () {
-
+            score = score + 10
             endQuiz()
         }
         buttonCEl.onclick = function () {
@@ -147,17 +155,9 @@ var startQuiz = function () {
 }
 
 var endQuiz = function () {
-    var element = document.getElementById("prompt");
-    element.remove();
-    ul()
-
-    var ul = function () {
-        var highscoresEl = document.getElementById("prompt")
-        var li = document.createElement("li");
-        li.appendChild(document.createTextNode("Four"));
-        li.setAttribute("id", "element4"); // added line
-        highscoresEl.appendChild(li);
-    }
+    var removeQuestions = document.getElementById("prompt");
+    removeQuestions.remove();
+    stopTime = (true)
 }
 
 // start quiz button
