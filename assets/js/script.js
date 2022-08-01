@@ -155,10 +155,30 @@ var startQuiz = function () {
 }
 
 var endQuiz = function () {
-    var removeQuestions = document.getElementById("prompt");
-    removeQuestions.remove();
+    var removeQuestion1 = document.getElementById("question1");
+    var removeQuestion2 = document.getElementById("question2");
+    var removeQuestion3 = document.getElementById("question3");
+    var removeQuestion4 = document.getElementById("question4");
+    var removeQuestion5 = document.getElementById("question5");
+
+    removeQuestion1.remove();
+    removeQuestion2.remove();
+    removeQuestion3.remove();
+    removeQuestion4.remove();
+    removeQuestion5.remove();
+
     stopTime = (true)
+
+    var username = window.prompt("Please Enter A 3 Character Username")
+
+    highscoreInput()
 }
+
+var highscoreInput = function () {
+    $("#prompt").append('<li><p>Hey</p></li>');
+}
+
+
 
 // start quiz button
 buttonEl.addEventListener("click", function () {
