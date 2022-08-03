@@ -1,6 +1,5 @@
 var score = 0
 var timeLeft = 60
-var stopTime = (false)
 
 var buttonEl = document.querySelector("#start-time");
 var timerEl = document.getElementById("countdown");
@@ -13,6 +12,8 @@ var buttonAEl = document.querySelector("#button-a");
 var buttonBEl = document.querySelector("#button-b");
 var buttonCEl = document.querySelector("#button-c");
 var buttonDEl = document.querySelector("#button-d");
+document.getElementById("box").style.display = "block";
+document.getElementById("highscores").style.display = "none";
 
 var countDown = function () {
     var timeInterval = setInterval(function () {
@@ -29,9 +30,6 @@ var countDown = function () {
             clearInterval(timeInterval)
             endQuiz()
         };
-        if (stopTime) {
-            clearInterval(timeInterval)
-        }
     }, 1000);
 };
 
@@ -154,27 +152,21 @@ var startQuiz = function () {
 }
 
 var endQuiz = function () {
-    var removeQuestion1 = document.getElementById("question1");
-    var removeQuestion2 = document.getElementById("question2");
-    var removeQuestion3 = document.getElementById("question3");
-    var removeQuestion4 = document.getElementById("question4");
-    var removeQuestion5 = document.getElementById("question5");
+    document.getElementById("box").style.display = "none";
+    document.getElementById("highscores").style.display = "block";
 
-    removeQuestion1.remove();
-    removeQuestion2.remove();
-    removeQuestion3.remove();
-    removeQuestion4.remove();
-    removeQuestion5.remove();
+    var userName = prompt("Please Enter A 3 Character Username")
 
-    stopTime = (true)
+    var node = document.createElement('li');
+    node.appendChild(document.createTextNode(''));
+ 
+    document.getElementById('input').appendChild(userInput);
 
-    var username = window.prompt("Please Enter A 3 Character Username")
-
-    highscoreInput()
+    userInput()
 }
 
-var highscoreInput = function () {
-    $("#prompt").append('<li><p>Hey</p></li>');
+var savedScores = function () {
+
 }
 
 

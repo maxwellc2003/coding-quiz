@@ -65,6 +65,15 @@ footer {
   width: 95%;
 }
 
+.highscores {
+  border: 1px solid black;
+  width: 50%
+}
+
+highscores ul li {
+  border: 1px solid black;
+}
+
 .hidden {
   visibility: hidden;
 }
