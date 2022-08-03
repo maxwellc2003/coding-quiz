@@ -152,20 +152,27 @@ var startQuiz = function () {
 }
 
 var endQuiz = function () {
-    document.getElementById("box").style.display = "none";
-    document.getElementById("highscores").style.display = "block";
 
+    
     var userName = prompt("Please Enter A 3 Character Username")
+    
+    if(userName.length >=1 || userName.length <= 3) {
+        var node = document.createElement('li');
+       
+        node.appendChild(document.createTextNode(''));
+       
+        var nameInput = document.getElementById('input')
+        nameInput.textContent = userName;
 
-    var node = document.createElement('li');
-    node.appendChild(document.createTextNode(''));
- 
-    document.getElementById('input').appendChild(userInput);
+        document.getElementById("box").style.display = "none";
+        document.getElementById("highscores").style.display = "block";
+       } else if (userName.length < 1 || userName.length > 3) {
+            window.alert("Please a username between 1-3 characters!")
+            endQuiz()
+       }
+ }
 
-    userInput()
-}
-
-var savedScores = function () {
+var savedInputs = function () {
 
 }
 
