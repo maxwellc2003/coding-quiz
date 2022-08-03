@@ -1,10 +1,12 @@
 var score = 0
 var timeLeft = 60
-var stopTime = (false)
+var USERNAME_KEY = "userNames"
+var userNames = JSON.parse(localStorage.getItem(USERNAME_KEY)) ?? [];
+var stopTime = ""
 
 var buttonEl = document.querySelector("#start-time");
 var timerEl = document.getElementById("countdown");
-var questionEl = document.getElementById("question-prompt");
+var questionEl = document.getElementById("questionPrompt");
 var optionAEl = document.getElementById("option-a");
 var optionBEl = document.getElementById("option-b");
 var optionCEl = document.getElementById("option-c");
@@ -13,6 +15,8 @@ var buttonAEl = document.querySelector("#button-a");
 var buttonBEl = document.querySelector("#button-b");
 var buttonCEl = document.querySelector("#button-c");
 var buttonDEl = document.querySelector("#button-d");
+document.getElementById("box").style.display = "block";
+document.getElementById("highscores").style.display = "none";
 
 var countDown = function () {
     var timeInterval = setInterval(function () {
@@ -29,7 +33,7 @@ var countDown = function () {
             clearInterval(timeInterval)
             endQuiz()
         };
-        if (stopTime) {
+        if (stopTime == (true)) {
             clearInterval(timeInterval)
         }
     }, 1000);
@@ -154,30 +158,43 @@ var startQuiz = function () {
 }
 
 var endQuiz = function () {
-    var removeQuestion1 = document.getElementById("question1");
-    var removeQuestion2 = document.getElementById("question2");
-    var removeQuestion3 = document.getElementById("question3");
-    var removeQuestion4 = document.getElementById("question4");
-    var removeQuestion5 = document.getElementById("question5");
-
-    removeQuestion1.remove();
-    removeQuestion2.remove();
-    removeQuestion3.remove();
-    removeQuestion4.remove();
-    removeQuestion5.remove();
+    buttonEl.disabled = false;
+    buttonEl.addEventListener("click", function () {
+        location.reload();
+    })
 
     stopTime = (true)
 
-    var username = window.prompt("Please Enter A 3 Character Username")
+    var userInput = prompt("Please Enter A 3 Character Username")
 
-    highscoreInput()
+    userName = "Username: " + (userInput) + ", Score: " + (score) + ", Time left: " + (timeLeft)
+
+    if(userName.length >=1 && userName.length <= 39) {
+        userNames.push(userName)
+
+        localStorage.setItem(USERNAME_KEY, JSON.stringify(userNames));
+
+        document.getElementById("box").style.display = "none";
+        document.getElementById("highscores").style.display = "block";
+
+        renderInputs()
+       } else if (userName.length < 1 || userName.length > 3) {
+            window.alert("Please a username between 1-3 characters!")
+            endQuiz()
+       }
+ }
+
+var renderInputs = function () {
+    var ulEl = document.getElementById("input");
+    ulEl.innterHTML = ""
+
+    for (var i = [0]; i < userNames.length; i += 1) {
+        var userName = userNames[i];
+        var liEl = document.createElement("li");
+        liEl.textContent = userName;
+        ulEl.appendChild(liEl)
+    }
 }
-
-var highscoreInput = function () {
-    $("#prompt").append('<li><p>Hey</p></li>');
-}
-
-
 
 // start quiz button
 buttonEl.addEventListener("click", function () {
@@ -197,3 +214,5 @@ buttonCEl.addEventListener("click", function () {
 
 buttonDEl.addEventListener("click", function () {
 })
+
+renderInputs()
