@@ -1,9 +1,11 @@
 var score = 0
 var timeLeft = 60
+var userName = ""
+var stopTime = ""
 
 var buttonEl = document.querySelector("#start-time");
 var timerEl = document.getElementById("countdown");
-var questionEl = document.getElementById("question-prompt");
+var questionEl = document.getElementById("questionPrompt");
 var optionAEl = document.getElementById("option-a");
 var optionBEl = document.getElementById("option-b");
 var optionCEl = document.getElementById("option-c");
@@ -30,6 +32,9 @@ var countDown = function () {
             clearInterval(timeInterval)
             endQuiz()
         };
+        if (stopTime == (true)) {
+            clearInterval(timeInterval)
+        }
     }, 1000);
 };
 
@@ -152,20 +157,29 @@ var startQuiz = function () {
 }
 
 var endQuiz = function () {
+    buttonEl.disabled = false;
+    buttonEl.addEventListener("click", function () {
+        location.reload();
+    })
 
-    
-    var userName = prompt("Please Enter A 3 Character Username")
-    
-    if(userName.length >=1 || userName.length <= 3) {
+    stopTime = (true)
+
+    var userInput = prompt("Please Enter A 3 Character Username")
+
+    userName = "Username: " + (userInput) + ", Score: " + (score) + ", Time left: " + (timeLeft)
+
+    if(userName.length >=1 && userName.length <= 39) {
         var node = document.createElement('li');
        
         node.appendChild(document.createTextNode(''));
        
         var nameInput = document.getElementById('input')
-        nameInput.textContent = userName;
+        nameInput.textContent = userName
 
         document.getElementById("box").style.display = "none";
         document.getElementById("highscores").style.display = "block";
+
+        savedInputs()
        } else if (userName.length < 1 || userName.length > 3) {
             window.alert("Please a username between 1-3 characters!")
             endQuiz()
@@ -173,7 +187,7 @@ var endQuiz = function () {
  }
 
 var savedInputs = function () {
-
+    console.log(userName)
 }
 
 

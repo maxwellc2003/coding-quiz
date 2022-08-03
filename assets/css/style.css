@@ -78,6 +78,10 @@ highscores ul li {
   visibility: hidden;
 }
 
+.question p {
+  margin-bottom: 5px;
+}
+
 .btn {
   outline: none;
   border: none;
