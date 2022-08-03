@@ -32,7 +32,6 @@ var countDown = function () {
         if (stopTime) {
             clearInterval(timeInterval)
         }
-        console.log(timeLeft)
     }, 1000);
 };
 

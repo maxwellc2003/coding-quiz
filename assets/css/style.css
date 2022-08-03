@@ -65,6 +65,10 @@ footer {
   width: 95%;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .btn {
   outline: none;
   border: none;
