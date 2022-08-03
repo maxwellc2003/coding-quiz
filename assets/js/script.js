@@ -1,6 +1,7 @@
 var score = 0
 var timeLeft = 60
-var userName = ""
+var USERNAME_KEY = "userNames"
+var userNames = JSON.parse(localStorage.getItem(USERNAME_KEY)) ?? [];
 var stopTime = ""
 
 var buttonEl = document.querySelector("#start-time");
@@ -169,28 +170,31 @@ var endQuiz = function () {
     userName = "Username: " + (userInput) + ", Score: " + (score) + ", Time left: " + (timeLeft)
 
     if(userName.length >=1 && userName.length <= 39) {
-        var node = document.createElement('li');
-       
-        node.appendChild(document.createTextNode(''));
-       
-        var nameInput = document.getElementById('input')
-        nameInput.textContent = userName
+        userNames.push(userName)
+
+        localStorage.setItem(USERNAME_KEY, JSON.stringify(userNames));
 
         document.getElementById("box").style.display = "none";
         document.getElementById("highscores").style.display = "block";
 
-        savedInputs()
+        renderInputs()
        } else if (userName.length < 1 || userName.length > 3) {
             window.alert("Please a username between 1-3 characters!")
             endQuiz()
        }
  }
 
-var savedInputs = function () {
-    console.log(userName)
+var renderInputs = function () {
+    var ulEl = document.getElementById("input");
+    ulEl.innterHTML = ""
+
+    for (var i = [0]; i < userNames.length; i += 1) {
+        var userName = userNames[i];
+        var liEl = document.createElement("li");
+        liEl.textContent = userName;
+        ulEl.appendChild(liEl)
+    }
 }
-
-
 
 // start quiz button
 buttonEl.addEventListener("click", function () {
@@ -210,3 +214,5 @@ buttonCEl.addEventListener("click", function () {
 
 buttonDEl.addEventListener("click", function () {
 })
+
+renderInputs()
