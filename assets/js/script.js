@@ -167,9 +167,9 @@ var endQuiz = function () {
 
     var userInput = prompt("Please Enter A 3 Character Username")
 
-    userName = "Username: " + (userInput) + ", Score: " + (score) + ", Time left: " + (timeLeft)
+    if (userInput.length >= 1 && userInput.length <= 3) {
+        userName = "Username: " + (userInput) + ", Score: " + (score) + ", Time left: " + (timeLeft)
 
-    if(userName.length >=1 && userName.length <= 39) {
         userNames.push(userName)
 
         localStorage.setItem(USERNAME_KEY, JSON.stringify(userNames));
@@ -178,17 +178,17 @@ var endQuiz = function () {
         document.getElementById("highscores").style.display = "block";
 
         renderInputs()
-       } else if (userName.length < 1 || userName.length > 3) {
-            window.alert("Please a username between 1-3 characters!")
-            endQuiz()
-       }
- }
+    } else if (userInput.length < 1 || userInput.length > 3) {
+        window.alert("Please a username between 1-3 characters!")
+        endQuiz()
+    }
+}
 
 var renderInputs = function () {
     var ulEl = document.getElementById("input");
     ulEl.innterHTML = ""
 
-    for (var i = [0]; i < userNames.length; i += 1) {
+    for (var i = 0; i < userNames.length; i += 1) {
         var userName = userNames[i];
         var liEl = document.createElement("li");
         liEl.textContent = userName;
@@ -214,5 +214,3 @@ buttonCEl.addEventListener("click", function () {
 
 buttonDEl.addEventListener("click", function () {
 })
-
-renderInputs()
