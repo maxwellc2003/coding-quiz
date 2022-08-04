@@ -43,11 +43,11 @@ var startQuiz = function () {
     buttonEl.disabled = true;
 
     var firstQuestion = function () {
-        questionEl.textContent = "first question";
-        optionAEl.textContent = "wrong";
-        optionBEl.textContent = "right";
-        optionCEl.textContent = "wrong";
-        optionDEl.textContent = "wrong";
+        questionEl.textContent = "var a = []; What does 'typeof a' return?";
+        optionAEl.textContent = "array";
+        optionBEl.textContent = "object";
+        optionCEl.textContent = "string";
+        optionDEl.textContent = "undefined";
 
         buttonAEl.onclick = function () {
             score = score - 5
@@ -71,11 +71,11 @@ var startQuiz = function () {
     }
 
     var secondQuestion = function () {
-        questionEl.textContent = "second question";
-        optionAEl.textContent = "wrong";
-        optionBEl.textContent = "wrong";
-        optionCEl.textContent = "wrong";
-        optionDEl.textContent = "right";
+        questionEl.textContent = "Inside which HTML element do we put the JavaScript?";
+        optionAEl.textContent = "link";
+        optionBEl.textContent = "JS";
+        optionCEl.textContent = "javascript";
+        optionDEl.textContent = "script";
 
         buttonAEl.onclick = function () {
             score = score - 5
@@ -99,11 +99,11 @@ var startQuiz = function () {
     }
 
     var thirdQuestion = function () {
-        questionEl.textContent = "third question";
-        optionAEl.textContent = "right";
-        optionBEl.textContent = "wrong";
-        optionCEl.textContent = "wrong";
-        optionDEl.textContent = "wrong";
+        questionEl.textContent = "What property is used to change the text color of an element?";
+        optionAEl.textContent = "color";
+        optionBEl.textContent = "fontcolor";
+        optionCEl.textContent = "textcolor";
+        optionDEl.textContent = "background-color";
 
         buttonAEl.onclick = function () {
             score = score + 10
@@ -127,11 +127,11 @@ var startQuiz = function () {
     }
 
     var fourthQuestion = function () {
-        questionEl.textContent = "fourth question";
-        optionAEl.textContent = "wrong";
-        optionBEl.textContent = "right";
-        optionCEl.textContent = "wrong";
-        optionDEl.textContent = "wrong";
+        questionEl.textContent = "What doctype is correct for HTML:5?";
+        optionAEl.textContent = "!DOCTYPE";
+        optionBEl.textContent = "!DOCTYPE HTML5";
+        optionCEl.textContent = "!DOCTYPE html";
+        optionDEl.textContent = "!HTML5";
 
         buttonAEl.onclick = function () {
             score = score - 5
