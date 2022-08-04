@@ -1,7 +1,7 @@
 var score = 0
 var timeLeft = 60
 var USERNAME_KEY = "userNames"
-var userNames = JSON.parse(localStorage.getItem(USERNAME_KEY)) ?? [];
+var userNames = JSON.parse(localStorage.getItem(USERNAME_KEY)) || [];
 var stopTime = ""
 
 var buttonEl = document.querySelector("#start-time");
@@ -167,7 +167,11 @@ var endQuiz = function () {
 
     var userInput = prompt("Please Enter A 3 Character Username")
 
-    userName = "Username: " + (userInput) + ", Score: " + (score) + ", Time left: " + (timeLeft)
+userName = {
+Username: userInput,
+Score: score,
+Time: timeLeft
+}
 
     if(userName.length >=1 && userName.length <= 39) {
         userNames.push(userName)
@@ -185,7 +189,7 @@ var endQuiz = function () {
  }
 
 var renderInputs = function () {
-    var ulEl = document.getElementById("input");
+    var ulEl = document.getElementById("highscores");
     ulEl.innterHTML = ""
 
     for (var i = [0]; i < userNames.length; i += 1) {
